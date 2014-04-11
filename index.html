@@ -201,7 +201,14 @@ $(document).ready(function() {
  *   other authentication information.
  */
 function onSignInCallback(authResult) {
-  helper.onSignInCallback(authResult);
-}
+   if (authResult['status']['signed_in'])
+   {
+      window.location = "MainScreen.html";
+   }
+   else
+   {
+    console.log("nopenopenopenopenopenopenopenopenopenopenopenopenopenopenopenope");
+   }
+ }
 </script>
 </html>
