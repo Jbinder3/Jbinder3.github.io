@@ -75,6 +75,7 @@
   </div>
 </body>
 <script type="text/javascript">
+var profile, email;
 var helper = (function() {
   var BASE_API_PATH = 'plus/v1/';
 
@@ -203,7 +204,12 @@ $(document).ready(function() {
 function onSignInCallback(authResult) {
    if (authResult['status']['signed_in'])
    {
-      console.log(userId);
+      var request = gapi.client.plus.people.get( {'userId' : 'me'} );
+      request.execute(loadProfileCallback);
+      console.log(email);
+
+
+
       window.location = "MainScreen.html";
    }
    else
@@ -211,5 +217,19 @@ function onSignInCallback(authResult) {
     console.log("nopenopenopenopenopenopenopenopenopenopenopenopenopenopenopenope");
    }
  }
+
+function loadProfileCallback(obj) {
+    profile = obj;
+
+    // Filter the emails object to find the user's primary account, which might
+    // not always be the first in the array. The filter() method supports IE9+.
+    email = obj['emails'].filter(function(v) {
+        return v.type === 'account'; // Filter out the primary email
+    })[0].value; // get the email from the filtered results, should always be defined.
+    displayProfile(profile);
+}
+
+
+
 </script>
 </html>
