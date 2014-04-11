@@ -203,6 +203,7 @@ $(document).ready(function() {
 function onSignInCallback(authResult) {
    if (authResult['status']['signed_in'])
    {
+      console.log(userId);
       window.location = "MainScreen.html";
    }
    else
