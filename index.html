@@ -160,6 +160,7 @@ var helper = (function() {
      */
     profile: function(){
       var request = gapi.client.plus.people.get( {'userId' : 'me'} );
+      request.execute(loadProfileCallback);
       request.execute( function(profile) {
         $('#profile').empty();
         if (profile.error) {
@@ -204,12 +205,7 @@ $(document).ready(function() {
 function onSignInCallback(authResult) {
    if (authResult['status']['signed_in'])
    {
-      var request = gapi.client.plus.people.get( {'userId' : 'me'} );
-      request.execute(loadProfileCallback);
       console.log(email);
-
-
-
       window.location = "MainScreen.html";
    }
    else
@@ -226,7 +222,6 @@ function loadProfileCallback(obj) {
     email = obj['emails'].filter(function(v) {
         return v.type === 'account'; // Filter out the primary email
     })[0].value; // get the email from the filtered results, should always be defined.
-    displayProfile(profile);
 }
 
 
