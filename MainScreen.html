@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Home</title>
+        <meta name="viewport" content="width=device-width; height=device; initial-scale=1.0"/>
+        <link rel="stylesheet" href="css/bootstrap.css" type="text/css"/>
+        <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
+        <script language="javascript" type="text/javascript" src="http://code.jquery.com/jquery-latest.js "></script>
+        <script src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="MainScreen.js"></script>
+    </head>
+    <body>
+        <body style="background:#000000">
+            <div class="container" id="Main">
+                <button onclick="NewReminderIt();" id="AddReminderButton" type="button" class="btn btn-primary">
+                    Add Reminder
+                </button>
+
+                <button type="button" class="btn btn-primary" id="MainScreenSearchButton">
+                    <span class="icon icon-search icon-white"></span>
+                </button>
+
+                <button onclick="BarGraphIt();" type="button" class="btn btn-primary" id="MainScreenBarGraphButton">
+                    <img src="img/Remember_me_logo.jpg" alt="Remember me logo" height="75" width="75"/>
+                </button>
+
+                <button onclick="CalendarIt()" type="button" class="btn btn-primary" id="MainScreenChartGraphButton">
+                    <i class="fa fa-calendar"></i>
+                </button>
+
+                <button onclick="TextChartIt();" type="button" class="btn btn-primary" id="MainScreenListGraphButton">
+                    <i class="fa fa-list"></i>
+                </button>
+
+                <div id="ScrollableListView" style="overflow:auto; height:300px;">
+                    <table id="ItemTable" style="width:300px">
+                        <tr>
+                            <th>Item</th>
+                            <th>Date</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+    <script>
+      function BarGraphIt()
+      {
+        window.location = "FakeBarGraph.html";
+      }
+      function NewReminderIt()
+      {
+        window.location = "NewReminder.html";
+      }
+      function TextChartIt()
+      {
+        window.location = "FakeTextChart.html";
+      }
+      function CalendarIt()
+      {
+        window.location = "https://www.google.com/calendar/m";
+      }
+    </script>
+    </body>
+</html>

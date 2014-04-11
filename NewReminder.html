@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+        <title>New Reminder</title>
+        <meta name="viewport" content="width=device-width, initial-scale=.8">
+        <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+        <link rel="stylesheet" type="text/css" media="all" href="jsdatepick-calendar/jsDatePick_ltr.min.css" />
+        <script type="text/javascript" src="jsdatepick-calendar/jsDatePick.min.1.3.js"></script>
+        <script type="text/javascript" src="NewReminder.js"></script>
+        <script src="http://code.jquery.com/jquery-latest.js "></script>
+        <script src="js/bootstrap.js"></script>
+	</head>
+	<body>
+		<body style="background:#000000">
+		<div id="MainNewReminder">
+
+      <div id="MainAddReminderText">
+        New Reminder
+      </div>
+
+      <div id="Name">
+        <div id="NameText">
+          Name
+        </div>
+        <div id="NameTextInput">
+         <input type="text" id="NameTextField">
+       </div>
+      </div>
+
+      <div id="Category">
+        <div id="CategoryText">
+          Category
+        </div>
+        <div class="btn-group" id="AddReminderButtonB">
+            <select id="CategoryInput">
+                <option id="CI_Car" value="Car">Car</option>
+                <option id="CI_Home" value="Home">Home</option>
+                <option id="CI_Professional" value="Professional">Professional</option>
+                <option id="CI_WellBeing" value="Well Being" selected="selected">Well Being</option>
+                <option id="CI_Other" value="Other">Other</option>
+            </select>
+       </div>
+     </div>
+
+     <div id="DueDate">
+        <div id="DueDateText">
+            DueDate
+        </div>
+        <div id="DueDateTextInput">
+         <input type="text" id="DueDateTextField">
+       </div>
+      </div>
+
+      <div id="Recurring">
+        <div id="RecurringText">
+          Recurring
+        </div>
+        <div class="btn-group" id="RecurringButton">
+            <select id="RecurringInput">
+                <option id="RI_0" value="0">Never</option>
+                <option id="RI_7" value="7">1 week</option>
+                <option id="RI_30" value="30">1 month</option>
+                <option id="RI_90" value="90">3 months</option>
+                <option id="RI_180" value="180">6 months</option>
+                <option id="RI_365" value="365">1 year</option>
+                <option id="RI_730" value="730">2 years</option>
+            </select>
+       </div>
+     </div>
+
+     <div id="RankBox">
+      <div id="RankText">
+        Importance
+      </div>
+      <div class="btn-group" id="RankButton">
+          <select id="ImportanceInput">
+              <option id="II_1" value="1">1 (least)</option>
+              <option id="II_2" value="2">2</option>
+              <option id="II_3" value="3">3</option>
+              <option id="II_4" value="4">4</option>
+              <option id="II_5" value="5">5 (most)</option>
+          </select>
+      </div>
+     </div>
+
+      <div id="Site">
+        <div id="SiteText">
+         Shopping Site
+        </div>
+       <div class="btn-group" id="SiteButton">
+           <select id="ShoppingSiteInput">
+               <option id="SSI_Amazon" value="Amazon">Amazon</option>
+               <option id="SSI_Ebay" value="Ebay">Ebay</option>
+               <option id="SSI_HomeDepot" value="Home Depot">Home Depot</option>
+               <option id="SSI_Google Shopping" value="Google Shopping">Google Shopping</option>
+           </select>
+        </div>
+     </div>
+
+     <div id="Photo">
+        <div id="PhotoText">
+          Attach Photo
+        </div>
+         <button id="PhotoButton" type="button" class="btn btn-primary">
+            Attach Photo
+          </button>
+         <input type="file" name="imagefile" id="imagefile" size="40" visibility="hidden"/>
+         <div id="imagepreview"><img height="240"/></div>
+      </div>
+
+
+     <div id="Description">
+        <div id="DescriptionText">
+          Description
+        </div>
+        <div id="DescriptionTextInput">
+         <textarea cols="50" rows="10" id="DescriptionTextField"></textarea>
+       </div>
+      </div>
+
+      <div id="NewReminderSubmitButton">
+       <button id="NewReminderSubmitButtonButton" type="button" class="btn btn-primary" onclick="addReminder()">
+          Submit
+       </button>
+      </div>
+    </div>
+	</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Bar chart of tasks</title>
+        <meta name="viewport" content="width=device-width, initial-scale=.7">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+         <script language="javascript" type="text/javascript" src="http://code.jquery.com/jquery-latest.js "></script>
+        <script src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="FakeBarGraph.js"></script>
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+
+        <script type="text/javascript">
+var pageLoaded = 0;
+var arrayOfTasks = null;
+
+var currentUser = 'awong';
+
+var dateArray = new Array();
+var nameArray = new Array();
+var daysBetween = new Array();
+var importanceArray = new Array();
+var colorArray = new Array();
+
+var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+var today = new Date();
+
+
+arrayOfTasks = getTasks(currentUser);
+
+for(var i = 0; i < arrayOfTasks.length; i++)
+{
+    var temp = arrayOfTasks[i].DueDate.split("-");
+    var date = new Date();
+    date.setFullYear(temp[0]);
+    date.setMonth(temp[1]);
+    date.setDate(temp[2]);
+    dateArray[i] = date;
+}
+
+for(var i = 0; i < arrayOfTasks.length; i++)
+{
+    nameArray[i] = arrayOfTasks[i].Name;
+}
+
+for(var i = 0; i < arrayOfTasks.length; i++)
+{
+  importanceArray[i] = arrayOfTasks[i].Importance;
+}
+//console.log(importanceArray[4]);
+
+for(var i = 0; i < arrayOfTasks.length; i++)
+{
+    daysBetween[i] = Math.round(Math.abs((dateArray[i].getTime() - today.getTime())/(oneDay)));
+}
+
+var a = 100000;
+var b = 0;
+var aa = null;
+var aaa = null;
+for(var i = 0; i < arrayOfTasks.length; i++)
+{
+  a = 1000000;
+  for(var j = i; j < arrayOfTasks.length; j++)
+  {
+    if(daysBetween[j]<= a)
+    {
+     a = daysBetween[j];
+     b = j;
+     aa = nameArray[j];
+     aaa = importanceArray[j];
+    }
+  }
+  daysBetween[b] = daysBetween[i];
+  daysBetween[i] = a;
+  nameArray[b] = nameArray[i];
+  nameArray[i] = aa;
+  importanceArray[b] = importanceArray[i];
+  importanceArray[i] = aaa;
+}
+
+for(var i = 0; i < arrayOfTasks.length; i++)
+{
+  if(importanceArray[i] == 1) colorArray[i] = 'blue';
+  if(importanceArray[i] == 2) colorArray[i] = 'green';
+  if(importanceArray[i] == 3) colorArray[i] = 'yellow';
+  if(importanceArray[i] == 4) colorArray[i] = 'orange';
+  if(importanceArray[i] == 5) colorArray[i] = 'red';
+}
+//console.log(colorArray[0]);
+
+google.load("visualization", "1", {packages:["corechart"]});
+google.setOnLoadCallback(drawChart);
+//console.log(dateArray[0].toDateString());
+function drawChart() {
+  var data = google.visualization.arrayToDataTable([
+    ['TaskName','DaysLeft',{ role: 'style' }],
+    [nameArray[0], daysBetween[0], colorArray[0]]
+    ]);
+
+  for(var i = 1; i < arrayOfTasks.length; i++)
+  {
+    data.addRow([nameArray[i], daysBetween[i], colorArray[i]]);
+  }
+
+  var options = {
+    width: 600,
+    hAxis:{textStyle:{color: 'white'},ticks:[10,20,30,40,50,60], viewWindow: {min:0, max:60}},
+    vAxis:{textStyle:{color: 'white'}},
+    backgroundColor: '#000000',
+    bar: {groupWidth: "90%"},
+    legend: { position: "none" },
+  }
+  var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+  chart.draw(data, options);
+}
+
+
+
+
+      function getTasks(username) {
+    var result = $.ajax({
+                        url: 'http://dev.m.gatech.edu/d/tross32/w/remindme/c/api/tasks/'+username,
+                        type: 'get',
+                        dataType: 'json',
+                        async: false
+                        });
+    var tasksArray = new Array();
+    var resultText = result.responseText;
+    var json = JSON.parse(resultText);
+    
+    return json;
+}
+    </script>
+
+
+
+    </head>
+    <body>
+        <body style="background:#000000">
+        <div id="chart_div" style=" height:600px; width:600px">
+        </div>
+    </body>
+</html>

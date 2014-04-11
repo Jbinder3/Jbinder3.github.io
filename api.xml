@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<api>
+	<description>
+		<![CDATA[This is an API to interact with users items in the DB]]>
+	</description>
+ 
+	<command id=‘users’ security='public'>
+		<description><![CDATA[This user API let you edit and view the user DB]]></description>
+		<index>
+			<description><![CDATA[This is how you can get a listing of all users]]></description>
+			<action file='users.php'><![CDATA[echo listUsers();]]></action>
+		</index>
+		<get>
+			<description><![CDATA[This is how you can get a specific user]]></description>
+			<action file='users.php'><![CDATA[echo getUser($_REST['username']);]]></action>
+		</get>
+		<post>
+			<description><![CDATA[This is how you can create a user]]></description>
+			<action file='users.php'><![CDATA[echo addUser($_REST(‘username’), $_POST['password']);]]></action>
+		</post>
+		<put>
+			<description><![CDATA[This is how you can update a user]]></description>
+			<action file='users.php'><![CDATA[echo updateEmail($_REST[‘username’],$_POST['email']);]]></action>
+			<action file='users.php'><![CDATA[echo updatePassword($_REST[‘username’],$_POST['password']);]]></action>
+		</put>
+		<delete>
+			<description><![CDATA[This is how you can delete a user]]></description>
+			<action file='users.php'><![CDATA[echo deleteUser($_REST['username']);]]></action>
+		</delete>
+	</command>
+</api>

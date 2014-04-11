@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+            <title>Log In</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+                    <script src="http://code.jquery.com/jquery-latest.js "></script>
+                    <script src="js/bootstrap.js"></script>
+                    </head>
+    <body>
+        <body style="background:#000000">
+            <div class="container" id="sign_in">
+                <div id="pic_login">
+                    <img src="img/Remember_me_logo.jpg" alt="Remember me logo" height="100" width="100">
+                        </div>
+                <form class="form-signin">
+                    <h2 class="form-signin-heading"><font color="WHITE">Please sign in</font></h2>
+                    <input type="text" class="input-block-level" placeholder="Email address">
+                        <input type="password" class="input-block-level" placeholder="Password">
+                            <button onclick="handleIt();" class="btn btn-large btn-primary" type="button">Sign in</button>
+                            </form>
+            </div>
+            <script>
+                function handleIt()
+                {
+                    window.location = "MainScreen.html";
+                }
+            </script>
+        </body>
+</html>
