@@ -53,7 +53,20 @@
     email = obj['emails'].filter(function(v) {
         return v.type === 'account'; // Filter out the primary email
     })[0].value; // get the email from the filtered results, should always be defined.
-    console.log(email);
+    // This is for testing  console.log(email);
+    //now setting the cookie
+    document.cookie="name=" + email;
+
+  var allcookies = document.cookie;
+   // Get all the cookies pairs in an array
+  cookiearray  = allcookies.split(';');
+   // Now take key value pair out of this array
+  name = cookiearray[i].split('=')[0];
+  value = cookiearray[i].split('=')[1];
+  console.log("value");
+
+
+    window.location = "MainScreen.html";
   }
 
   /**
