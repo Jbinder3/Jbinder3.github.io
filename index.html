@@ -57,6 +57,9 @@
     //now setting the cookie
     document.cookie="name=" + email;
 
+/*
+//practice to make finding the correct cookie
+    var user = null;
     var allcookies = document.cookie;
    // Get all the cookies pairs in an array
    cookiearray  = allcookies.split(';');
@@ -64,8 +67,13 @@
    for(var i=0; i<cookiearray.length; i++){
       name = cookiearray[i].split('=')[0];
       value = cookiearray[i].split('=')[1];
-      if(value.indexOf("@gmail.com")>=0) console.log(value);
+      if(value.indexOf("@gmail.com")>=0)
+      {
+        user = value;
+        break;
+      }
     }
+*/
 
 
     window.location = "MainScreen.html";
