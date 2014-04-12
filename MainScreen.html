@@ -9,6 +9,23 @@
         <script language="javascript" type="text/javascript" src="http://code.jquery.com/jquery-latest.js "></script>
         <script src="js/bootstrap.js"></script>
         <script type="text/javascript" src="MainScreen.js"></script>
+        <script type="text/javascript">
+        var user = null;
+        var allcookies = document.cookie;
+        // Get all the cookies pairs in an array
+         cookiearray  = allcookies.split(';');
+         // Now take key value pair out of this array
+         for(var i=0; i<cookiearray.length; i++){
+            name = cookiearray[i].split('=')[0];
+           value = cookiearray[i].split('=')[1];
+           if(value.indexOf("@gmail.com")>=0)
+           {
+              user = value;
+              break;
+           }
+           console.log(user);
+          }
+        </script>
     </head>
     <body>
         <body style="background:#000000">
