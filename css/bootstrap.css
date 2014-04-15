@@ -8,6 +8,27 @@
  * Designed and built with all the love in the world by @mdo and @fat.
  */
 
+#SignInText{
+  color:#FFFFFF;
+  text-align: center;
+  padding-top: 20px;
+  font-size: 400%;
+}
+
+#pic {
+  padding-top: 20px;
+  text-align:center;
+}
+
+#signin-button{
+  padding-top: 20px;
+  text-align:center;
+}
+
+#IndexBox{
+
+}
+
 #ItemFilter{
   width:75px;
   position:relative;
@@ -328,9 +349,6 @@
   
 }
 
-#pic {
-  float:right;
-}
 .clearfix {
   *zoom: 1;
 }
