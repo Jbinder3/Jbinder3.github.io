@@ -115,10 +115,10 @@ function editReminder() {
 //INCOMPLETE -- UPDATE 'url' AND 'data'
 function deleteReminder() {
     var postResult = $.ajax({
-                            url: 'http://dev.m.gatech.edu/d/tross32/w/remindme/c/api/updateTask',
+                            url: 'http://dev.m.gatech.edu/d/tross32/w/remindme/c/api/deleteTask',
                             type: 'post',
                             dataType: 'json',
-                            data: "taskid="+taskId+"&username="+currentUser,
+                            data: "taskid="+taskId,
                             success: function(data) {
                                 window.location = 'MainScreen.html'
                             }

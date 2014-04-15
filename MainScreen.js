@@ -2,7 +2,7 @@ var pageLoaded = 0;
 var arrayOfTasks = null;
 
 var tasksTableName = 'ItemTable';
-var currentUser = 'awong';
+var currentUser = null;
 var LINK_TO_EDITREMINDER = 'EditReminder.html';
 
 window.onload = function() {
@@ -12,12 +12,15 @@ window.onload = function() {
 
 function loaded(element) {
     if (document.getElementById(element) != null) {
+        alert(document.cookie);
+        currentUser
+        
         arrayOfTasks = getTasks(currentUser);
         createRows();
     } else if (!pageLoaded)
         setTimeout('loaded(\''+element+'\')',100);
 }
-    
+
 function createRows() {
 	var table = document.getElementById(tasksTableName);
     
