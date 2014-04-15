@@ -12,8 +12,10 @@ window.onload = function() {
 
 function loaded(element) {
     if (document.getElementById(element) != null) {
+        currentUser = getCurrentUser();
+        alert(currentUser);
+        
         currentUser = "awong";
-        alert(document.cookie);
         
         arrayOfTasks = getTasks(currentUser);
         createRows();
@@ -21,7 +23,7 @@ function loaded(element) {
         setTimeout('loaded(\''+element+'\')',100);
 }
 
-function setCurrentUser() {
+function getCurrentUser() {
     var allcookies = document.cookie;
     // Get all the cookies pairs in an array
     cookiearray  = allcookies.split(';');
