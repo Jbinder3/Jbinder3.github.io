@@ -83,13 +83,9 @@ function addCalEvent() {
     var r = confirm("Add reminder as a Google Calendar calendar?");
     if (r == true) {
         var remindersName = document.getElementById("NameTextField").value;
-        var category = document.getElementById("CategoryInput").value;
         var dueDate = document.getElementById("DueDateTextField").value;
         dueDate.replace('-', '');
         var recurrence = document.getElementById("RecurringInput").value;
-        var importance = document.getElementById("ImportanceInput").value;
-        var shoppingSite = document.getElementById("ShoppingSiteInput").value;
-        var description = document.getElementById("DescriptionTextField").value;
         
         /*
          * Create a recurring event
@@ -119,12 +115,12 @@ function addCalEvent() {
         
         // This callback method that will be called after a successful insertion from insertEntry()
         var callback = function(result) {
-            PRINT('Event created!');
+            alert('Event created!');
         }
         
         // Error handler will be invoked if there is an error from insertEntry()
         var handleError = function(error) {
-            PRINT(error);
+            alert(error);
         }
         
         // Submit the request using the calendar service object
