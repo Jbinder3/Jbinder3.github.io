@@ -105,7 +105,7 @@
          <button id="PhotoButton" type="button" class="btn btn-primary">
             Attach Photo
           </button>
-         <input type="file" name="imagefile" id="imagefile" size="40" style="hidden"/>
+         <input type="file" name="imagefile" id="imagefile" size="40" style="display:hidden"/>
          <div id="imagepreview"><img height="240"/></div>
       </div>
 
@@ -119,9 +119,11 @@
        </div>
       </div>
 
-       <button id="NewReminderSubmitButtonButton" type="button" class="btn btn-primary" onclick="addReminder()">
+        <div>
+            <button id="NewReminderSubmitButtonButton" type="button" class="btn btn-primary" onclick="addReminder()">
           Submit
-       </button>
+            </button>
+       </div>
     </div>
 	</body>
 </html>
