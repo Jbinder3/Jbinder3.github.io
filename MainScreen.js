@@ -34,6 +34,7 @@ function setCurrentUser() {
             return value;
         }
     }
+    return "none";
 }
 
 function createRows() {
