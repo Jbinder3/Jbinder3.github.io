@@ -81,15 +81,12 @@ function addReminder() {
 
 function addCalEvent() {
     var r = confirm("Add reminder as a Google Calendar calendar?");
+    /*
     if (r == true) {
         var remindersName = document.getElementById("NameTextField").value;
         var dueDate = document.getElementById("DueDateTextField").value;
         dueDate.replace('-', '');
         var recurrence = document.getElementById("RecurringInput").value;
-        
-        /*
-         * Create a recurring event
-         */
         
         // Create the calendar service object
         var calendarService = new google.gdata.calendar.CalendarService('GoogleInc-jsguide-1.0');
@@ -127,4 +124,5 @@ function addCalEvent() {
         calendarService.insertEntry(feedUri, entry, callback, 
                                     handleError, google.gdata.calendar.CalendarEventEntry);
     }
+    */
 }
