@@ -95,32 +95,22 @@
   <script src="http://code.jquery.com/jquery-latest.js "></script>
   <script src="js/bootstrap.js"></script>
 </head>
-<body>
-  <body style="background:#000000">
-    <div id="pic">
-      <img src="img/Remember_me_logo.jpg" alt="Remember me logo" height="100" width="100">
-    </div>
+<body style="background:#000000">
+    <div class="container">
+        <div id="pic">
+            <img src="img/Remember_me_logo.jpg" alt="Remember me logo" height="100" width="100">
+        </div>
 
-  <div id="signin-button" class="show">
-     <div class="g-signin"
-      data-callback="loginFinishedCallback"
-      data-approvalprompt="force"
-      data-clientid="73107048969.apps.googleusercontent.com"
-      data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.profile.emails.read"
-      data-height="short"
-      data-cookiepolicy="single_host_origin"
-      >
-    </div>
-    <!-- In most cases, you don't want to use approvalprompt=force. Specified
-    here to facilitate the demo.-->
-  </div>
-
-  <div id="profile" class="hide">
-    <div>
-      <span id="pic"></span>
-      <span id="name"></span>
-    </div>
-
-    <div id="email"></div>
+        <div id="signin-button" class="show">
+            <div class="g-signin"
+                data-callback="loginFinishedCallback"
+                data-approvalprompt="force"
+                data-clientid="73107048969.apps.googleusercontent.com"
+                data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.profile.emails.read"
+                data-height="short"
+                data-cookiepolicy="single_host_origin">
+            </div>
+            <!-- In most cases, you don't want to use approvalprompt=force. Specified here to facilitate the demo.-->
+        </div>
   </div>
 </body>
