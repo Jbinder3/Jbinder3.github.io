@@ -9,7 +9,7 @@ var arrayOfTasks = null;
 
 window.onload = function() {
     pageLoaded = 1;
-    currentUser = getValue('user');
+    currentUser = getCurrentUser();
     index = getValue('id');
     loaded();
     g_calendarObject = new JsDatePick({
@@ -30,6 +30,22 @@ window.onload = function() {
                                             day = "0" + day;
                                            document.getElementById("DueDateTextField").value = obj.year + "-" + month + "-" + day;
                                            });
+}
+
+function getCurrentUser() {
+    var allcookies = document.cookie;
+    // Get all the cookies pairs in an array
+    cookiearray  = allcookies.split(';');
+    // Now take key value pair out of this array
+    for(var i=0; i<cookiearray.length; i++){
+        var name = cookiearray[i].split('=')[0];
+        var value = cookiearray[i].split('=')[1];
+        if(value.indexOf("@gmail.com")>=0)
+        {
+            return value;
+        }
+    }
+    return "null";
 }
 
 function loaded() {

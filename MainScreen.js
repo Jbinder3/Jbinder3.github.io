@@ -43,7 +43,7 @@ function createRows() {
 		var row = table.insertRow(i+1);
 		var cell1 = row.insertCell(0);
 		var cell2 = row.insertCell(1);
-		cell1.innerHTML = '<a href="'+LINK_TO_EDITREMINDER+'?user='+currentUser+'&id='+i+'">'+arrayOfTasks[i].Name+'</a>';
+		cell1.innerHTML = '<a href="'+LINK_TO_EDITREMINDER+'?id='+i+'">'+arrayOfTasks[i].Name+'</a>';
 		cell2.innerHTML = arrayOfTasks[i].DueDate;
 	}
 }

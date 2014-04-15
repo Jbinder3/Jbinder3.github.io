@@ -73,7 +73,7 @@ function addReminder() {
                                 history.back()
                             },
                             error: function(xhr, textStatus, errorThrown){
-                                alert('request failed: ' + textStatus + '; ' + errorThrown);
+                                alert('Request failed: ' + textStatus + '; ' + errorThrown);
                             }
     });
 }
