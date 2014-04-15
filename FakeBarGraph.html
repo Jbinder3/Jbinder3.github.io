@@ -18,7 +18,8 @@
 var pageLoaded = 0;
 var arrayOfTasks = null;
 
-var currentUser = getCurrentUser();
+//var currentUser = getCurrentUser();
+var currentUser = "jrbinder3@gmail.com";
 
 var dateArray = new Array();
 var nameArray = new Array();
@@ -125,9 +126,10 @@ function drawChart() {
   }
 
   var options = {
+    chartArea: {left:300, width:"50%",height:"90%"},
     width: 600,
-    hAxis:{textStyle:{color: 'white'},ticks:[10,20,30,40,50,60], viewWindow: {min:0, max:60}},
-    vAxis:{textStyle:{color: 'white'}},
+    hAxis:{textStyle:{color: 'white',fontSize: 20},ticks:[10,20,30,40,50,60], viewWindow: {min:0, max:60}},
+    vAxis:{textStyle:{color: 'white',fontSize: 22}},
     backgroundColor: '#000000',
     bar: {groupWidth: "90%"},
     legend: { position: "none" },
