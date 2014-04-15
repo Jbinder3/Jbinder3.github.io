@@ -9,7 +9,6 @@ var arrayOfTasks = null;
 
 window.onload = function() {
     pageLoaded = 1;
-    currentUser = getCurrentUser();
     index = getValue('id');
     loaded();
     g_calendarObject = new JsDatePick({
@@ -50,6 +49,8 @@ function getCurrentUser() {
 
 function loaded() {
     if (document.getElementById('NameTextField') != null) {
+        currentUser = getCurrentUser();
+        alert(currentUser);
         arrayOfTasks = getTasks(currentUser);
         taskId = arrayOfTasks[index].TaskID;
         loadPage();
