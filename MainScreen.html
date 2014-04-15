@@ -18,15 +18,15 @@
          for(var i=0; i<cookiearray.length; i++){
             name = cookiearray[i].split('=')[0];
            value = cookiearray[i].split('=')[1];
-           console.log(name);
-           console.log(value);
+           //console.log(name);
+           //console.log(value);
            if(name.indexOf("name")>=0)
            {
               user = value;
               break;
            }
           }
-          console.log(user);
+          //console.log(user);
         </script>
     </head>
     <body>
@@ -34,10 +34,6 @@
             <div class="container" id="Main">
                 <button onclick="NewReminderIt();" id="AddReminderButton" type="button" class="btn btn-primary">
                     Add Reminder
-                </button>
-
-                <button type="button" class="btn btn-primary" id="MainScreenSearchButton">
-                    <span class="icon icon-search icon-white"></span>
                 </button>
 
                 <button onclick="BarGraphIt();" type="button" class="btn btn-primary" id="MainScreenBarGraphButton">

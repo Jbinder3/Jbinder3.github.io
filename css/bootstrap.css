@@ -8,6 +8,41 @@
  * Designed and built with all the love in the world by @mdo and @fat.
  */
 
+#ItemFilter{
+  width:75px;
+  position:relative;
+}
+
+#DateFilter{
+  width:75px;
+  position:relative;
+  left:60px;
+}
+
+#ImportanceFilter{
+  width:75px;
+  position:relative;
+  left:120px;
+}
+
+#CategoryFilter{
+  width:75px;
+  position:relative;
+  float:right;
+}
+
+#FilterDiv{
+  padding-top: 50px;
+}
+
+#TextChartText{
+  color:#FFFFFF;
+  font-size: 50px;
+  padding-top: 15px;
+  font-weight: bolder;
+  text-align:center;
+}
+
 #MainList {
   width: 500px;
   margin-left:auto;
@@ -262,7 +297,7 @@
 }
 
 #AddReminderButton {
-  width: 300px;
+  width: 340px;
   height: 35px;
 }
 
