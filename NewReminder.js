@@ -71,6 +71,9 @@ function addReminder() {
                             data: "username="+currentUser+"&name="+remindersName+"&importance="+importance+"&category="+category+"&duedate="+dueDate+"&recurring="+recurrence+"&shoppingsite="+shoppingSite+"&description="+description,
                             success: function(data) {
                                 history.back()
+                            },
+                            error: function(xhr, textStatus, errorThrown){
+                                alert('request failed: ' + textStatus + '; ' + errorThrown);
                             }
     });
 }
