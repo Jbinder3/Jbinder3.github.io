@@ -9,7 +9,6 @@ var arrayOfTasks = null;
 
 window.onload = function() {
     pageLoaded = 1;
-    currentUser = getValue('user');
     index = getValue('id');
     loaded();
     g_calendarObject = new JsDatePick({
@@ -32,8 +31,25 @@ window.onload = function() {
                                            });
 }
 
+function getCurrentUser() {
+    var allcookies = document.cookie;
+    // Get all the cookies pairs in an array
+    cookiearray  = allcookies.split(';');
+    // Now take key value pair out of this array
+    for(var i=0; i<cookiearray.length; i++){
+        var name = cookiearray[i].split('=')[0];
+        var value = cookiearray[i].split('=')[1];
+        if(value.indexOf("@gmail.com")>=0)
+        {
+            return value;
+        }
+    }
+    return "null";
+}
+
 function loaded() {
     if (document.getElementById('NameTextField') != null) {
+        currentUser = getCurrentUser();
         arrayOfTasks = getTasks(currentUser);
         taskId = arrayOfTasks[index].TaskID;
         loadPage();
@@ -115,10 +131,10 @@ function editReminder() {
 //INCOMPLETE -- UPDATE 'url' AND 'data'
 function deleteReminder() {
     var postResult = $.ajax({
-                            url: 'http://dev.m.gatech.edu/d/tross32/w/remindme/c/api/updateTask',
+                            url: 'http://dev.m.gatech.edu/d/tross32/w/remindme/c/api/deleteTask',
                             type: 'post',
                             dataType: 'json',
-                            data: "taskid="+taskId+"&username="+currentUser,
+                            data: "taskid="+taskId,
                             success: function(data) {
                                 window.location = 'MainScreen.html'
                             }

@@ -2,7 +2,7 @@ var pageLoaded = 0;
 var arrayOfTasks = null;
 
 var tasksTableName = 'ItemTable';
-var currentUser = 'awong';
+var currentUser = null;
 var LINK_TO_EDITREMINDER = 'EditReminder.html';
 
 window.onload = function() {
@@ -12,12 +12,30 @@ window.onload = function() {
 
 function loaded(element) {
     if (document.getElementById(element) != null) {
+        currentUser = getCurrentUser();
+        
         arrayOfTasks = getTasks(currentUser);
         createRows();
     } else if (!pageLoaded)
         setTimeout('loaded(\''+element+'\')',100);
 }
-    
+
+function getCurrentUser() {
+    var allcookies = document.cookie;
+    // Get all the cookies pairs in an array
+    cookiearray  = allcookies.split(';');
+    // Now take key value pair out of this array
+    for(var i=0; i<cookiearray.length; i++){
+        var name = cookiearray[i].split('=')[0];
+        var value = cookiearray[i].split('=')[1];
+        if(value.indexOf("@gmail.com")>=0)
+        {
+            return value;
+        }
+    }
+    return "null";
+}
+
 function createRows() {
 	var table = document.getElementById(tasksTableName);
     
@@ -25,7 +43,7 @@ function createRows() {
 		var row = table.insertRow(i+1);
 		var cell1 = row.insertCell(0);
 		var cell2 = row.insertCell(1);
-		cell1.innerHTML = '<a href="'+LINK_TO_EDITREMINDER+'?user='+currentUser+'&id='+i+'">'+arrayOfTasks[i].Name+'</a>';
+		cell1.innerHTML = '<a href="'+LINK_TO_EDITREMINDER+'?id='+i+'">'+arrayOfTasks[i].Name+'</a>';
 		cell2.innerHTML = arrayOfTasks[i].DueDate;
 	}
 }
