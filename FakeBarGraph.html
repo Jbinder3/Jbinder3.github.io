@@ -18,7 +18,7 @@
 var pageLoaded = 0;
 var arrayOfTasks = null;
 
-var currentUser = 'awong';
+var currentUser = getCurrentUser();
 
 var dateArray = new Array();
 var nameArray = new Array();
@@ -95,6 +95,23 @@ for(var i = 0; i < arrayOfTasks.length; i++)
 
 google.load("visualization", "1", {packages:["corechart"]});
 google.setOnLoadCallback(drawChart);
+
+function getCurrentUser() {
+    var allcookies = document.cookie;
+    // Get all the cookies pairs in an array
+    cookiearray  = allcookies.split(';');
+    // Now take key value pair out of this array
+    for(var i=0; i<cookiearray.length; i++){
+        var name = cookiearray[i].split('=')[0];
+        var value = cookiearray[i].split('=')[1];
+        if(value.indexOf("@gmail.com")>=0)
+        {
+            return value;
+        }
+    }
+    return "null";
+}
+
 //console.log(dateArray[0].toDateString());
 function drawChart() {
   var data = google.visualization.arrayToDataTable([
