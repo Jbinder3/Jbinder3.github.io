@@ -31,7 +31,7 @@ function setCurrentUser() {
         var value = cookiearray[i].split('=')[1];
         if(value.indexOf("@gmail.com")>=0)
         {
-            return value;
+            return "found";
         }
     }
     return "none";
