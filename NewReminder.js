@@ -1,7 +1,8 @@
-var currentUser = 'awong';
+var currentUser = null;
 var g_calendarObject = null;
 
 window.onload = function() {
+    currentUser = getCurrentUser();
     document.getElementById("imagefile").style.visibility="hidden";
     document.getElementById("imagepreview").style.visibility="hidden";
     g_calendarObject = new JsDatePick({
@@ -36,6 +37,22 @@ window.onload = function() {
                             document.getElementById("imagepreview").style.visibility="visible";
                            }
     });
+}
+
+function getCurrentUser() {
+    var allcookies = document.cookie;
+    // Get all the cookies pairs in an array
+    cookiearray  = allcookies.split(';');
+    // Now take key value pair out of this array
+    for(var i=0; i<cookiearray.length; i++){
+        var name = cookiearray[i].split('=')[0];
+        var value = cookiearray[i].split('=')[1];
+        if(value.indexOf("@gmail.com")>=0)
+        {
+            return value;
+        }
+    }
+    return "null";
 }
 
 function addReminder() {
