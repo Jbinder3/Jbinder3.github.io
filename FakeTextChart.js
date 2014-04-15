@@ -42,8 +42,12 @@ function createRows() {
 		var row = table.insertRow(i+1);
 		var cell1 = row.insertCell(0);
 		var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
 		cell1.innerHTML = '<a href="'+LINK_TO_EDITREMINDER+'?user='+currentUser+'&id='+i+'">'+arrayOfTasks[i].Name+'</a>';
 		cell2.innerHTML = arrayOfTasks[i].DueDate;
+        cell3.innerHTML = arrayOfTasks[i].Importance;
+        cell4.innerHTML = arrayOfTasks[i].Category;
 	}
 }
 
@@ -60,4 +64,60 @@ function getTasks(username) {
     var json = JSON.parse(resultText);
     
     return json;
+}
+
+function deleteRows()
+{
+    for(var i = 0; i < arrayOfTasks.length; i++)
+    {
+        document.getElementById(tasksTableName).deleteRow(1);
+    }
+}
+
+function FilterItem()
+{
+    deleteRows();
+    arrayOfTasks.sort(function(a,b)
+    {
+        if(a.Name < b.Name) return -1;
+        if(a.Name > b.Name) return 1;
+        return 0;
+    });
+    createRows();
+}
+
+function FilterDate()
+{
+    deleteRows();
+    arrayOfTasks.sort(function(a,b)
+    {
+        if(a.DueDate < b.DueDate) return -1;
+        if(a.DueDate > b.DueDate) return 1;
+        return 0;
+    });
+    createRows();
+}
+
+function FilterImportance()
+{
+    deleteRows();
+    arrayOfTasks.sort(function(a,b)
+    {
+        if(a.Importance < b.Importance) return -1;
+        if(a.Importance > b.Importance) return 1;
+        return 0;
+    });
+    createRows();
+}
+
+function FilterCategory()
+{
+    deleteRows();
+    arrayOfTasks.sort(function(a,b)
+    {
+        if(a.Category < b.Category) return -1;
+        if(a.Category > b.Category) return 1;
+        return 0;
+    });
+    createRows();
 }

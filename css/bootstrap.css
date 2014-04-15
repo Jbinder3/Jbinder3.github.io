@@ -16,13 +16,13 @@
 #DateFilter{
   width:75px;
   position:relative;
-  left:60px;
+  left:100px;
 }
 
 #ImportanceFilter{
   width:75px;
   position:relative;
-  left:120px;
+  left:200px;
 }
 
 #CategoryFilter{
@@ -44,13 +44,14 @@
 }
 
 #MainList {
-  width: 500px;
+  width: 600px;
   margin-left:auto;
   margin-right:auto;
 }
 
 #ItemChart {
-  font-size: 200%;
+  font-size: 150%;
+  text-align: center;
   color: #FFFFFF;
   border-collapse:separate;
   border-spacing: 0px 10px;

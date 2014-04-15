@@ -11,30 +11,6 @@
         <script src="http://code.jquery.com/jquery-latest.js "></script>
         <script src="js/bootstrap.js"></script>
         <script type="text/javascript" src="FakeTextChart.js"></script>
-
-        <script type="text/javascript">
-        //get cookie name
-        var user = null;
-        var allcookies = document.cookie;
-        // Get all the cookies pairs in an array
-         cookiearray  = allcookies.split(';');
-         // Now take key value pair out of this array
-         for(var i=0; i<cookiearray.length; i++){
-            name = cookiearray[i].split('=')[0];
-           value = cookiearray[i].split('=')[1];
-           //console.log(name);
-           //console.log(value);
-           if(name.indexOf("name")>=0)
-           {
-              user = value;
-              break;
-           }
-          }
-          //console.log(user);
-
-
-        </script>
-
     </head>
     <body>
         <body style="background:#000000">
@@ -44,28 +20,31 @@
             </div>
 
             <div id="FilterDiv">
-                <button onclick="" id="ItemFilter" type="button" class="btn btn-primary">
+                <button onclick="FilterItem()" id="ItemFilter" type="button" class="btn btn-primary">
                     Item
                 </button>
 
-                <button onclick="" id="DateFilter" type="button" class="btn btn-primary">
+                <button onclick="FilterDate()" id="DateFilter" type="button" class="btn btn-primary">
                     Date
                 </button>
 
-                <button onclick="" id="ImportanceFilter" type="button" class="btn btn-primary">
+                <button onclick="FilterImportance()" id="ImportanceFilter" type="button" class="btn btn-primary">
                     Importance
                 </button>
 
-                <button onclick="" id="CategoryFilter" type="button" class="btn btn-primary">
+                <button onclick="FilterCategory()" id="CategoryFilter" type="button" class="btn btn-primary">
                     Category
                 </button>
+
             </div>
 
             <div id="ScrollableListView" style="overflow:auto; height:500px;">
-                 <table id="ItemChart" style="width:500px">
+                 <table id="ItemChart" style="width:600px">
                      <tr>
                         <th>Item</th>
                         <th>Date</th>
+                        <th>Importance</th>
+                        <th>Category</th>
                      </tr>
                 </table>
             </div>
