@@ -3,6 +3,7 @@ var g_calendarObject = null;
 
 window.onload = function() {
     currentUser = getCurrentUser();
+    alert(currentUser);
     document.getElementById("imagefile").style.visibility="hidden";
     document.getElementById("imagepreview").style.visibility="hidden";
     g_calendarObject = new JsDatePick({
