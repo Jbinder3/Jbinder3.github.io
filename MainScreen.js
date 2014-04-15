@@ -13,9 +13,6 @@ window.onload = function() {
 function loaded(element) {
     if (document.getElementById(element) != null) {
         currentUser = getCurrentUser();
-        alert(currentUser);
-        
-        currentUser = "awong";
         
         arrayOfTasks = getTasks(currentUser);
         createRows();
