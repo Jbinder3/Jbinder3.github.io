@@ -50,7 +50,6 @@ function getCurrentUser() {
 function loaded() {
     if (document.getElementById('NameTextField') != null) {
         currentUser = getCurrentUser();
-        alert(currentUser);
         arrayOfTasks = getTasks(currentUser);
         taskId = arrayOfTasks[index].TaskID;
         loadPage();
