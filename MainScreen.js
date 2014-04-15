@@ -33,10 +33,10 @@ function getCurrentUser() {
         var value = cookiearray[i].split('=')[1];
         if(value.indexOf("@gmail.com")>=0)
         {
-            return "found";
+            return value;
         }
     }
-    return "none";
+    return "null";
 }
 
 function createRows() {
