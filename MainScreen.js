@@ -12,7 +12,7 @@ window.onload = function() {
 
 function loaded(element) {
     if (document.getElementById(element) != null) {
-        //currentUser = getCurrentUser();
+        currentUser = "awong";
         alert(document.cookie);
         
         arrayOfTasks = getTasks(currentUser);
