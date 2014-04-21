@@ -58,7 +58,13 @@ function getTasks(username) {
     
     var tasksArray = new Array();
     var resultText = result.responseText;
-    var json = JSON.parse(resultText);
-    
-    return json;
+    try
+    {
+        var json = JSON.parse(resultText);
+        return json;
+    }
+    catch(err)
+    {
+        getTasks(currentUser);
+    }
 }
