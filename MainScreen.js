@@ -53,7 +53,11 @@ function getTasks(username) {
                         url: 'http://dev.m.gatech.edu/d/tross32/w/remindme/c/api/tasks/'+username,
                         type: 'get',
                         dataType: 'json',
-                        async: false
+                        async: false,
+                        error: function (err)
+                        {
+                            getTasks(currentUser);
+                        }
                         });
     
     var tasksArray = new Array();
