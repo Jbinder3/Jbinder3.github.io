@@ -63,23 +63,6 @@ function getCurrentUser() {
 }
 
 function addReminder() {
-    
-    var postResult = $.ajax({
-                            url: 'http://dev.m.gatech.edu/d/tross32/w/remindme/c/api/tasks',
-                            type: 'post',
-                            dataType: 'json',
-                            data: "username="+currentUser+"&name="+remindersName+"&importance="+importance+"&category="+category+"&duedate="+dueDate+"&recurring="+recurrence+"&shoppingsite="+shoppingSite+"&description="+description,
-                            success: function(data) {
-                                addCalEvent();
-                                history.back()
-                            },
-                            error: function(xhr, textStatus, errorThrown){
-                                alert('Request failed: ' + textStatus + '; ' + errorThrown);
-                            }
-    });
-}
-
-function addCalEvent() {
     var remindersName = document.getElementById("NameTextField").value;
     var category = document.getElementById("CategoryInput").value;
     var dueDate = document.getElementById("DueDateTextField").value;
@@ -88,9 +71,52 @@ function addCalEvent() {
     var shoppingSite = document.getElementById("ShoppingSiteInput").value;
     var description = document.getElementById("DescriptionTextField").value;
     
+    var postResult = $.ajax({
+                            url: 'http://dev.m.gatech.edu/d/tross32/w/remindme/c/api/tasks',
+                            type: 'post',
+                            dataType: 'json',
+                            data: "username="+currentUser+"&name="+remindersName+"&importance="+importance+"&category="+category+"&duedate="+dueDate+"&recurring="+recurrence+"&shoppingsite="+shoppingSite+"&description="+description,
+                            success: function(data) {
+                                addCalEvent();
+                            },
+                            error: function(xhr, textStatus, errorThrown){
+                                alert('Request failed: ' + textStatus + '; ' + errorThrown);
+                            }
+    });
+}
+
+function addCalEvent() {
     var r = confirm("Add reminder as a Google Calendar calendar?");
     if (r == true) 
     {
+      var postResult = $.ajax({
+        url: 'https://www.googleapis.com/calendar/v3/calendars/primary/events',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+              "end": {
+              "date": "2014-04-22"
+              },
+              "start": {
+              "date": "2014-04-22"
+              },
+              "summary": "GO BANANAS",
+              "recurrence": [
+              "RRULE:FREQ=WEEKLY;BYDAY=MO,WE,FR",
+              "",
+              "",
+              ""
+              ]
+              },
+        success: function(data) {
+            history.back()
+        },
+        error: function(xhr, textStatus, errorThrown){
+            alert('Request failed: ' + textStatus + '; ' + errorThrown);
+        }
+    });
+
+      /*
         POST https://www.googleapis.com/calendar/v3/calendars/primary/events
         {
             {
@@ -109,6 +135,7 @@ function addCalEvent() {
               ]
               }
         }
+        */
     }
     addReminder();
 }
