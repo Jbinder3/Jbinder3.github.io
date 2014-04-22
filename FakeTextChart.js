@@ -57,7 +57,7 @@ function createRows() {
         {
             for(var j = 0; j < arrayOfTasks2.length; j++)
             {
-                if(arrayOfTasks[i].Name = arrayOfTasks2[j].Name && arrayOfTasks[i].DueDate = arrayOfTasks2[j].DueDate && arrayOfTasks[i].Importance = arrayOfTasks2[j].Importance && arrayOfTasks[i].Category = arrayOfTasks2[j].Category)
+                if(arrayOfTasks[i].Name == arrayOfTasks2[j].Name && arrayOfTasks[i].DueDate == arrayOfTasks2[j].DueDate && arrayOfTasks[i].Importance == arrayOfTasks2[j].Importance && arrayOfTasks[i].Category == arrayOfTasks2[j].Category)
                 {
                     cell1.innerHTML = '<a href="'+LINK_TO_EDITREMINDER+'?user='+currentUser+'&id='+j+'">'+arrayOfTasks[i].Name+'</a>';
                     break;
