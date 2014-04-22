@@ -10,6 +10,7 @@ var arrayOfTasks = null;
 window.onload = function() {
     pageLoaded = 1;
     index = getValue('id');
+    document.getElementById("imagepreview").style.visibility="hidden";
     loaded();
     g_calendarObject = new JsDatePick({
                                       useMode: 2,
@@ -29,6 +30,20 @@ window.onload = function() {
                                             day = "0" + day;
                                            document.getElementById("DueDateTextField").value = obj.year + "-" + month + "-" + day;
                                            });
+    $('#PhotoButton').click(function(){
+                            $('#imagefile').click();
+                            });
+    $('#imagefile').change(function(e) {
+                           e.preventDefault();
+                           var f = e.target.files[0];
+                           if(f && window.FileReader)
+                           {
+                           var reader = new FileReader();
+                           reader.onload = function(evt) { $('#imagepreview>img').attr('src', evt.target.result); };
+                           reader.readAsDataURL(f);
+                           document.getElementById("imagepreview").style.visibility="visible";
+                           }
+                           });
 }
 
 function getCurrentUser() {
@@ -66,6 +81,10 @@ function loadPage() {
     setIndexOf(document.getElementById("ImportanceInput"), 'II', arrayOfTasks[index].Importance);
     setIndexOf(document.getElementById("ShoppingSiteInput"), 'SSI', arrayOfTasks[index].ShoppingSite);
     document.getElementById("DescriptionTextField").value = arrayOfTasks[index].Description;
+    
+    if (arrayOfTasks[index].Photo != "NULL") {
+        
+    }
 }
 
 function setIndexOf(element, initials, inputItem) {
@@ -116,19 +135,19 @@ function editReminder() {
     var importance = document.getElementById("ImportanceInput").value;
     var shoppingSite = document.getElementById("ShoppingSiteInput").value;
     var description = document.getElementById("DescriptionTextField").value;
+    var photobytes = "NULL";
     
     var postResult = $.ajax({
                             url: 'http://dev.m.gatech.edu/d/tross32/w/remindme/c/api/updateTask',
                             type: 'post',
                             dataType: 'json',
-                            data: "taskid="+taskId+"&username="+currentUser+"&name="+remindersName+"&importance="+importance+"&category="+category+"&duedate="+dueDate+"&recurring="+recurrence+"&shoppingsite="+shoppingSite+"&description="+description,
+                            data: "taskid="+taskId+"&username="+currentUser+"&name="+remindersName+"&importance="+importance+"&category="+category+"&duedate="+dueDate+"&recurring="+recurrence+"&shoppingsite="+shoppingSite+"&description="+description+"&photo="+photobytes,
                             success: function(data) {
                                 window.location = 'MainScreen.html'
                             }
     });
 }
 
-//INCOMPLETE -- UPDATE 'url' AND 'data'
 function deleteReminder() {
     var postResult = $.ajax({
                             url: 'http://dev.m.gatech.edu/d/tross32/w/remindme/c/api/deleteTask',

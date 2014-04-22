@@ -12,6 +12,7 @@ var description = null;
 window.onload = function() {
     currentUser = getCurrentUser();
     document.getElementById("imagepreview").style.visibility="hidden";
+    
     g_calendarObject = new JsDatePick({
                                       useMode: 2,
                                       target: "DueDateTextField",
@@ -30,9 +31,11 @@ window.onload = function() {
                                             day = "0" + day;
                                            document.getElementById("DueDateTextField").value = obj.year + "-" + month + "-" + day;
                                            });
+    
     $('#PhotoButton').click(function(){
                           $('#imagefile').click();
                           });
+    
     $('#imagefile').change(function(e) {
                            e.preventDefault();
                            var f = e.target.files[0];
@@ -75,9 +78,6 @@ function addReminder() {
     var photourl = 'http://i.imgur.com/5SjkkZx.png';
     var photobytes = "NULL";
     
-    alert('making photos ajax call');
-    
-    
     var photoResult = $.ajax({
                              url: 'photos.php',
                              type: 'post',
@@ -87,15 +87,12 @@ function addReminder() {
                                 'imagefilename': photourl
                              },
                              success: function(data) {
-                                alert('photo success');
                                 photobytes = data;
                              },
-                             error: function(xhr, desc, err) {
-                                alert('photos saveimage failed');
+                             error: function(xhr, textStatus, errorThrown) {
+                                alert('Request failed: ' + textStatus + '; ' + errorThrown);
                              }
     })
-    
-    alert('making add reminder call');
     
     var postResult = $.ajax({
                             url: 'http://dev.m.gatech.edu/d/tross32/w/remindme/c/api/tasks',
