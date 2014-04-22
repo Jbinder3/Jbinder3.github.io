@@ -109,7 +109,7 @@ function addCalEvent() {
     if (r == true) 
     {
       var postResult = $.ajax({
-        url: 'https://www.googleapis.com/calendar/v3/calendars/primary/events',
+        url: '/calendar/v3/calendars/primary/events',
         type: 'POST',
         dataType: 'json',
         data: {
