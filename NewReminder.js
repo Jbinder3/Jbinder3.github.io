@@ -72,7 +72,7 @@ function addReminder() {
     shoppingSite = document.getElementById("ShoppingSiteInput").value;
     description = document.getElementById("DescriptionTextField").value;
     var photourl = 'http://i.imgur.com/5SjkkZx.png';
-    var photobytes = null;
+    var photobytes = "NULL";
     
     alert('making photos ajax call');
     
@@ -99,7 +99,7 @@ function addReminder() {
                             type: 'post',
                             dataType: 'json',
                             async: false,
-                            data: "username="+currentUser+"&name="+remindersName+"&importance="+importance+"&category="+category+"&duedate="+dueDate+"&recurring="+recurrence+"&shoppingsite="+shoppingSite+"&description="+description+"&photo="+((typeof photobytes === 'undefined')?"NULL":photobytes),
+                            data: "username="+currentUser+"&name="+remindersName+"&importance="+importance+"&category="+category+"&duedate="+dueDate+"&recurring="+recurrence+"&shoppingsite="+shoppingSite+"&description="+description+"&photo=NULL",
                             success: function(data) {
                                 history.back();
                                 //addCalEvent();
