@@ -64,13 +64,13 @@ function getCurrentUser() {
 
 function addReminder() {
 
-    var remindersName = document.getElementById("NameTextField").value;
-    var category = document.getElementById("CategoryInput").value;
-    var dueDate = document.getElementById("DueDateTextField").value;
-    var recurrence = document.getElementById("RecurringInput").value;
-    var importance = document.getElementById("ImportanceInput").value;
-    var shoppingSite = document.getElementById("ShoppingSiteInput").value;
-    var description = document.getElementById("DescriptionTextField").value;
+    remindersName = document.getElementById("NameTextField").value;
+    category = document.getElementById("CategoryInput").value;
+    dueDate = document.getElementById("DueDateTextField").value;
+    recurrence = document.getElementById("RecurringInput").value;
+    importance = document.getElementById("ImportanceInput").value;
+    shoppingSite = document.getElementById("ShoppingSiteInput").value;
+    description = document.getElementById("DescriptionTextField").value;
     var photourl = $('#imagepreview>img').attr('src', evt.target.result);
     var photobytes = null;
     
