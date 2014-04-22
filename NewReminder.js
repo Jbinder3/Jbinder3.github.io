@@ -1,6 +1,14 @@
 var currentUser = null;
 var g_calendarObject = null;
 
+var remindersName = null;
+var category = null;
+var dueDate = null;
+var recurrence = null;
+var importance = null;
+var shoppingSite = null;
+var description = null;
+
 window.onload = function() {
     currentUser = getCurrentUser();
     document.getElementById("imagepreview").style.visibility="hidden";
@@ -41,7 +49,7 @@ window.onload = function() {
 function getCurrentUser() {
     var allcookies = document.cookie;
     // Get all the cookies pairs in an array
-    cookiearray  = allcookies.split(';');
+    cookiearray = allcookies.split(';');
     // Now take key value pair out of this array
     for(var i=0; i<cookiearray.length; i++){
         var name = cookiearray[i].split('=')[0];
@@ -55,6 +63,7 @@ function getCurrentUser() {
 }
 
 function addReminder() {
+
     var remindersName = document.getElementById("NameTextField").value;
     var category = document.getElementById("CategoryInput").value;
     var dueDate = document.getElementById("DueDateTextField").value;
@@ -97,13 +106,55 @@ function addReminder() {
 }
 
 function addCalEvent() {
-    var r = confirm("Add reminder as a Google Calendar calendar?");
+   var r = confirm("Add reminder as a Google Calendar calendar?");
     if (r == true) 
     {
-        POST /calendar/v3/calendars/primary/events
-        {
-            
+      var postResult = $.ajax({
+        url: 'https://www.googleapis.com/calendar/v3/calendars/primary/events',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+              "end": {
+              "date": "2014-04-22"
+              },
+              "start": {
+              "date": "2014-04-22"
+              },
+              "summary": "GO BANANAS",
+              "recurrence": [
+              "RRULE:FREQ=WEEKLY;BYDAY=MO,WE,FR",
+              "",
+              "",
+              ""
+              ]
+              },
+        success: function(data) {
+            history.back()
+        },
+        error: function(xhr, textStatus, errorThrown){
+            alert('Request failed: Calendar error');
         }
+    });
+
+      /*
+        POST https://www.googleapis.com/calendar/v3/calendars/primary/events
+        {
+            {
+              "end": {
+              "date": "2014-04-22"
+              },
+              "start": {
+              "date": "2014-04-22"
+              },
+              "summary": "GO BANANAS",
+              "recurrence": [
+              "RRULE:FREQ=WEEKLY;BYDAY=MO,WE,FR",
+              "",
+              "",
+              ""
+              ]
+              }
+        }
+        */
     }
-    addReminder();
 }
