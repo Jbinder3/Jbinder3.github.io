@@ -51,7 +51,6 @@ function createRows() {
         {
             arrayOfTasks2 = jQuery.extend(true, {}, arrayOfTasks);
             cell1.innerHTML = '<a href="'+LINK_TO_EDITREMINDER+'?user='+currentUser+'&id='+i+'">'+arrayOfTasks[i].Name+'</a>';
-            temp++;
         }
         else
         {
@@ -67,6 +66,7 @@ function createRows() {
 		cell2.innerHTML = arrayOfTasks[i].DueDate;
         cell3.innerHTML = arrayOfTasks[i].Importance;
         cell4.innerHTML = arrayOfTasks[i].Category;
+        temp++;
 	}
 }
 
