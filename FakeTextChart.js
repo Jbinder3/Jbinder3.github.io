@@ -49,7 +49,10 @@ function createRows() {
         var cell4 = row.insertCell(3);
         if(temp == 0)
         {
-            arrayOfTasks2 = jQuery.extend(true, {}, arrayOfTasks);
+            for(var j = 0; j < arrayOfTasks.length; j++)
+            {
+                arrayOfTasks2[j] = arrayOfTasks[j];
+            }
             cell1.innerHTML = '<a href="'+LINK_TO_EDITREMINDER+'?user='+currentUser+'&id='+i+'">'+arrayOfTasks[i].Name+'</a>';
         }
         else
