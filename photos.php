@@ -7,7 +7,6 @@
         $contents = addslashes($contents);
         echo($contents);
         fclose($file);
-    }
     
     exit();
 

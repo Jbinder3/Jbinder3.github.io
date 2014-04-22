@@ -112,7 +112,7 @@ function addReminder() {
                             }
     });
 }
-/*
+
 function addCalEvent() {
    var r = confirm("Add reminder as a Google Calendar calendar?");
     if (r == true) 
@@ -142,7 +142,7 @@ function addCalEvent() {
         error: function(xhr, textStatus, errorThrown){
             alert('Request failed: Calendar error');
         }
-    });*/
+    });
 
       /*
         POST https://www.googleapis.com/calendar/v3/calendars/primary/events
@@ -164,5 +164,5 @@ function addCalEvent() {
               }
         }
         */
-//    }
-//}
+    }
+}
