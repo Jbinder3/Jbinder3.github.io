@@ -74,9 +74,9 @@ function addReminder() {
     var photourl = 'http://i.imgur.com/5SjkkZx.png';
     var photobytes = "NULL";
     
-    //alert('making photos ajax call');
+    alert('making photos ajax call');
     
-    /*
+    
     var photoResult = $.ajax({
                              url: 'photos.php',
                              type: 'post',
@@ -91,7 +91,7 @@ function addReminder() {
                              error: function(xhr, desc, err) {
                                 alert('photos saveimage failed');
                              }
-    })*/
+    })
     
     alert('making add reminder call');
     
@@ -100,7 +100,7 @@ function addReminder() {
                             type: 'post',
                             dataType: 'json',
                             async: false,
-                            data: "username="+currentUser+"&name="+remindersName+"&importance="+importance+"&category="+category+"&duedate="+dueDate+"&recurring="+recurrence+"&shoppingsite="+shoppingSite+"&description="+description+"&photo=NULL",
+                            data: "username="+currentUser+"&name="+remindersName+"&importance="+importance+"&category="+category+"&duedate="+dueDate+"&recurring="+recurrence+"&shoppingsite="+shoppingSite+"&description="+description+"&photo="+photobytes,
                             success: function(data) {
                                 history.back();
                                 //addCalEvent();
