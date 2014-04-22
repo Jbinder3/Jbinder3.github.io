@@ -4,6 +4,8 @@ var arrayOfTasks = null;
 var tasksTableName = 'ItemChart';
 var currentUser = null;
 var LINK_TO_EDITREMINDER = 'EditReminder.html';
+var temp = 0;
+var arrayOfTasks2 = null;
 
 window.onload = function() {
     pageLoaded = 1;
@@ -34,6 +36,7 @@ function loaded(element) {
     } else if (!pageLoaded)
         setTimeout('loaded(\''+element+'\')',100);
 }
+
     
 function createRows() {
 	var table = document.getElementById(tasksTableName);
@@ -44,7 +47,23 @@ function createRows() {
 		var cell2 = row.insertCell(1);
         var cell3 = row.insertCell(2);
         var cell4 = row.insertCell(3);
-		cell1.innerHTML = '<a href="'+LINK_TO_EDITREMINDER+'?user='+currentUser+'&id='+i+'">'+arrayOfTasks[i].Name+'</a>';
+        if(temp == 0)
+        {
+            arrayOfTasks2 = jQuery.extend(true, {}, arrayOfTasks);
+            cell1.innerHTML = '<a href="'+LINK_TO_EDITREMINDER+'?user='+currentUser+'&id='+i+'">'+arrayOfTasks[i].Name+'</a>';
+            temp++;
+        }
+        else
+        {
+            for(var j = 0; j < arrayOfTasks2.length; j++)
+            {
+                if(arrayOfTasks[i].Name = arrayOfTasks2[j].Name && arrayOfTasks[i].DueDate = arrayOfTasks2[j].DueDate && arrayOfTasks[i].Importance = arrayOfTasks2[j].Importance && arrayOfTasks[i].Category = arrayOfTasks2[j].Category)
+                {
+                    cell1.innerHTML = '<a href="'+LINK_TO_EDITREMINDER+'?user='+currentUser+'&id='+j+'">'+arrayOfTasks[i].Name+'</a>';
+                    break;
+                }
+            }
+        }
 		cell2.innerHTML = arrayOfTasks[i].DueDate;
         cell3.innerHTML = arrayOfTasks[i].Importance;
         cell4.innerHTML = arrayOfTasks[i].Category;
@@ -70,6 +89,7 @@ function deleteRows()
 {
     for(var i = 0; i < arrayOfTasks.length; i++)
     {
+        //document.getElementById(tasksTableName).row(1).removeAttribute("href");
         document.getElementById(tasksTableName).deleteRow(1);
     }
 }
