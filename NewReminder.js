@@ -112,7 +112,7 @@ function addCalEvent() {
             history.back()
         },
         error: function(xhr, textStatus, errorThrown){
-            alert('Request failed: ' + textStatus + '; ' + errorThrown);
+            alert('Request failed: Calendar error');
         }
     });
 
