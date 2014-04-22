@@ -87,6 +87,7 @@ function addReminder() {
                                 'imagefilename': photourl
                              },
                              success: function(data) {
+                                alert('photo success');
                                 photobytes = data;
                              },
                              error: function(xhr, desc, err) {
