@@ -62,12 +62,30 @@ function addReminder() {
     var importance = document.getElementById("ImportanceInput").value;
     var shoppingSite = document.getElementById("ShoppingSiteInput").value;
     var description = document.getElementById("DescriptionTextField").value;
+    var photourl = $('#imagepreview>img').attr('src', evt.target.result);
+    var photobytes = null;
+    
+    var photoResult = $.ajax({
+                             url: 'photos.php',
+                             type: 'post',
+                             data: {
+                                'action': 'saveimage',
+                                'imagefilename': photourl
+                             },
+                             success: function(data, status) {
+                                photobytes = data;
+                             },
+                             error: function(xhr, desc, err) {
+                                console.log(xhr);
+                                console.log("Details: " + desc + "\nError:" + err);
+                             }
+    })
     
     var postResult = $.ajax({
                             url: 'http://dev.m.gatech.edu/d/tross32/w/remindme/c/api/tasks',
                             type: 'post',
                             dataType: 'json',
-                            data: "username="+currentUser+"&name="+remindersName+"&importance="+importance+"&category="+category+"&duedate="+dueDate+"&recurring="+recurrence+"&shoppingsite="+shoppingSite+"&description="+description,
+                            data: "username="+currentUser+"&name="+remindersName+"&importance="+importance+"&category="+category+"&duedate="+dueDate+"&recurring="+recurrence+"&shoppingsite="+shoppingSite+"&description="+description+"&photo="+((photobytes==null)?"NULL":photobytes),
                             success: function(data) {
                                 addCalEvent();
                                 history.back()
