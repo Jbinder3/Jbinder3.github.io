@@ -74,8 +74,9 @@ function addReminder() {
     var photourl = 'http://i.imgur.com/5SjkkZx.png';
     var photobytes = "NULL";
     
-    alert('making photos ajax call');
+    //alert('making photos ajax call');
     
+    /*
     var photoResult = $.ajax({
                              url: 'photos.php',
                              type: 'post',
@@ -90,7 +91,7 @@ function addReminder() {
                              error: function(xhr, desc, err) {
                                 alert('photos saveimage failed');
                              }
-    })
+    })*/
     
     alert('making add reminder call');
     
@@ -109,7 +110,7 @@ function addReminder() {
                             }
     });
 }
-
+/*
 function addCalEvent() {
    var r = confirm("Add reminder as a Google Calendar calendar?");
     if (r == true) 
@@ -139,7 +140,7 @@ function addCalEvent() {
         error: function(xhr, textStatus, errorThrown){
             alert('Request failed: Calendar error');
         }
-    });
+    });*/
 
       /*
         POST https://www.googleapis.com/calendar/v3/calendars/primary/events
@@ -161,5 +162,5 @@ function addCalEvent() {
               }
         }
         */
-    }
-}
+//    }
+//}
