@@ -71,6 +71,7 @@ function addReminder() {
     importance = document.getElementById("ImportanceInput").value;
     shoppingSite = document.getElementById("ShoppingSiteInput").value;
     description = document.getElementById("DescriptionTextField").value;
+    
     var photourl = 'http://i.imgur.com/5SjkkZx.png';
     var photobytes = "NULL";
     
