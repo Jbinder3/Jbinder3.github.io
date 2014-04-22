@@ -79,6 +79,7 @@ function addReminder() {
     var photoResult = $.ajax({
                              url: 'photos.php',
                              type: 'post',
+                             async: false,
                              data: {
                                 'action': 'saveimage',
                                 'imagefilename': photourl
