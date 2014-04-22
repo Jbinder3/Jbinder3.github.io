@@ -74,6 +74,8 @@ function addReminder() {
     var photourl = $('#imagepreview>img').attr('src', evt.target.result);
     var photobytes = null;
     
+    alert('making photos ajax call');
+    
     var photoResult = $.ajax({
                              url: 'photos.php',
                              type: 'post',
@@ -90,6 +92,8 @@ function addReminder() {
                                 console.log("Details: " + desc + "\nError:" + err);
                              }
     })
+    
+    alert('making add reminder call');
     
     var postResult = $.ajax({
                             url: 'http://dev.m.gatech.edu/d/tross32/w/remindme/c/api/tasks',
