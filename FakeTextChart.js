@@ -66,8 +66,8 @@ function createRows() {
 		cell2.innerHTML = arrayOfTasks[i].DueDate;
         cell3.innerHTML = arrayOfTasks[i].Importance;
         cell4.innerHTML = arrayOfTasks[i].Category;
-        temp++;
 	}
+    temp++;
 }
 
 function getTasks(username) {
