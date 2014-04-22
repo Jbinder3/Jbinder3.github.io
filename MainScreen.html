@@ -10,23 +10,23 @@
         <script src="js/bootstrap.js"></script>
         <script type="text/javascript" src="MainScreen.js"></script>
         <script type="text/javascript">
-        var user = null;
-        var allcookies = document.cookie;
-        // Get all the cookies pairs in an array
-         cookiearray  = allcookies.split(';');
-         // Now take key value pair out of this array
-         for(var i=0; i<cookiearray.length; i++){
-            name = cookiearray[i].split('=')[0];
-           value = cookiearray[i].split('=')[1];
-           //console.log(name);
-           //console.log(value);
-           if(name.indexOf("name")>=0)
-           {
-              user = value;
-              break;
-           }
-          }
-          //console.log(user);
+            var user = null;
+            var allcookies = document.cookie;
+            
+            // Get all the cookies pairs in an array
+            cookiearray  = allcookies.split(';');
+         
+            // Now take key value pair out of this array
+            for(var i=0; i<cookiearray.length; i++){
+                name = cookiearray[i].split('=')[0];
+                value = cookiearray[i].split('=')[1];
+                
+                if(name.indexOf("name")>=0)
+                {
+                    user = value;
+                    break;
+                }
+            }
         </script>
     </head>
     <body>

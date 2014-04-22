@@ -75,10 +75,10 @@ function addReminder() {
     shoppingSite = document.getElementById("ShoppingSiteInput").value;
     description = document.getElementById("DescriptionTextField").value;
     
-    var photourl = 'http://i.imgur.com/5SjkkZx.png';
+    //var photourl = 'http://i.imgur.com/5SjkkZx.png';
     var photobytes = "NULL";
     
-    var photoResult = $.ajax({
+    /*var photoResult = $.ajax({
                              url: 'photos.php',
                              type: 'post',
                              async: false,
@@ -92,7 +92,7 @@ function addReminder() {
                              error: function(xhr, textStatus, errorThrown) {
                                 alert('Request failed: ' + textStatus + '; ' + errorThrown);
                              }
-    })
+    })*/
     
     var postResult = $.ajax({
                             url: 'http://dev.m.gatech.edu/d/tross32/w/remindme/c/api/tasks',
