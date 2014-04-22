@@ -97,7 +97,6 @@ function addReminder() {
                             data: "username="+currentUser+"&name="+remindersName+"&importance="+importance+"&category="+category+"&duedate="+dueDate+"&recurring="+recurrence+"&shoppingsite="+shoppingSite+"&description="+description+"&photo="+((photobytes==null)?"NULL":photobytes),
                             success: function(data) {
                                 addCalEvent();
-                                history.back()
                             },
                             error: function(xhr, textStatus, errorThrown){
                                 alert('Request failed: ' + textStatus + '; ' + errorThrown);
