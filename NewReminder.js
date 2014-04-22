@@ -85,6 +85,7 @@ function addReminder() {
                                 photobytes = data;
                              },
                              error: function(xhr, desc, err) {
+                                alert('photos saveimage failed');
                                 console.log(xhr);
                                 console.log("Details: " + desc + "\nError:" + err);
                              }
@@ -96,7 +97,8 @@ function addReminder() {
                             dataType: 'json',
                             data: "username="+currentUser+"&name="+remindersName+"&importance="+importance+"&category="+category+"&duedate="+dueDate+"&recurring="+recurrence+"&shoppingsite="+shoppingSite+"&description="+description+"&photo="+((photobytes==null)?"NULL":photobytes),
                             success: function(data) {
-                                addCalEvent();
+                                history.back();
+                                //addCalEvent();
                             },
                             error: function(xhr, textStatus, errorThrown){
                                 alert('Request failed: ' + textStatus + '; ' + errorThrown);
@@ -128,7 +130,7 @@ function addCalEvent() {
               ]
               },
         success: function(data) {
-            history.back()
+                              history.back();
         },
         error: function(xhr, textStatus, errorThrown){
             alert('Request failed: Calendar error');
