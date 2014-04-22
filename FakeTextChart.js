@@ -5,7 +5,7 @@ var tasksTableName = 'ItemChart';
 var currentUser = null;
 var LINK_TO_EDITREMINDER = 'EditReminder.html';
 var temp = 0;
-var arrayOfTasks2 = null;
+var arrayOfTasks2 = new Array();
 
 window.onload = function() {
     pageLoaded = 1;
