@@ -84,7 +84,7 @@ function addReminder() {
                                 'action': 'saveimage',
                                 'imagefilename': photourl
                              },
-                             success: function(data, status) {
+                             success: function(data) {
                                 photobytes = data;
                              },
                              error: function(xhr, desc, err) {
@@ -98,7 +98,8 @@ function addReminder() {
                             url: 'http://dev.m.gatech.edu/d/tross32/w/remindme/c/api/tasks',
                             type: 'post',
                             dataType: 'json',
-                            data: "username="+currentUser+"&name="+remindersName+"&importance="+importance+"&category="+category+"&duedate="+dueDate+"&recurring="+recurrence+"&shoppingsite="+shoppingSite+"&description="+description+"&photo="+((photobytes==null)?"NULL":photobytes),
+                            async: false,
+                            data: "username="+currentUser+"&name="+remindersName+"&importance="+importance+"&category="+category+"&duedate="+dueDate+"&recurring="+recurrence+"&shoppingsite="+shoppingSite+"&description="+description+"&photo="+((typeof photobytes === 'undefined')?"NULL":photobytes),
                             success: function(data) {
                                 history.back();
                                 //addCalEvent();
