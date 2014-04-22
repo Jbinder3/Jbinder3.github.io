@@ -1,6 +1,14 @@
 var currentUser = null;
 var g_calendarObject = null;
 
+var remindersName = null;
+var category = null;
+var dueDate = null;
+var recurrence = null;
+var importance = null;
+var shoppingSite = null;
+var description = null;
+
 window.onload = function() {
     currentUser = getCurrentUser();
     document.getElementById("imagepreview").style.visibility="hidden";
@@ -55,13 +63,6 @@ function getCurrentUser() {
 }
 
 function addReminder() {
-    var remindersName = document.getElementById("NameTextField").value;
-    var category = document.getElementById("CategoryInput").value;
-    var dueDate = document.getElementById("DueDateTextField").value;
-    var recurrence = document.getElementById("RecurringInput").value;
-    var importance = document.getElementById("ImportanceInput").value;
-    var shoppingSite = document.getElementById("ShoppingSiteInput").value;
-    var description = document.getElementById("DescriptionTextField").value;
     
     var postResult = $.ajax({
                             url: 'http://dev.m.gatech.edu/d/tross32/w/remindme/c/api/tasks',
@@ -79,12 +80,34 @@ function addReminder() {
 }
 
 function addCalEvent() {
+    var remindersName = document.getElementById("NameTextField").value;
+    var category = document.getElementById("CategoryInput").value;
+    var dueDate = document.getElementById("DueDateTextField").value;
+    var recurrence = document.getElementById("RecurringInput").value;
+    var importance = document.getElementById("ImportanceInput").value;
+    var shoppingSite = document.getElementById("ShoppingSiteInput").value;
+    var description = document.getElementById("DescriptionTextField").value;
+    
     var r = confirm("Add reminder as a Google Calendar calendar?");
     if (r == true) 
     {
-        POST /calendar/v3/calendars/primary/events
+        POST https://www.googleapis.com/calendar/v3/calendars/primary/events
         {
-            
+            {
+              "end": {
+              "date": "2014-04-22"
+              },
+              "start": {
+              "date": "2014-04-22"
+              },
+              "summary": "GO BANANAS",
+              "recurrence": [
+              "RRULE:FREQ=WEEKLY;BYDAY=MO,WE,FR",
+              "",
+              "",
+              ""
+              ]
+              }
         }
     }
     addReminder();
