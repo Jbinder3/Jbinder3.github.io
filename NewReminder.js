@@ -71,7 +71,7 @@ function addReminder() {
     importance = document.getElementById("ImportanceInput").value;
     shoppingSite = document.getElementById("ShoppingSiteInput").value;
     description = document.getElementById("DescriptionTextField").value;
-    var photourl = $('#imagepreview>img').attr('src', evt.target.result);
+    var photourl = 'http://i.imgur.com/5SjkkZx.png';
     var photobytes = null;
     
     alert('making photos ajax call');
@@ -88,8 +88,6 @@ function addReminder() {
                              },
                              error: function(xhr, desc, err) {
                                 alert('photos saveimage failed');
-                                console.log(xhr);
-                                console.log("Details: " + desc + "\nError:" + err);
                              }
     })
     
